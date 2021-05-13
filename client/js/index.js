@@ -1,11 +1,11 @@
 //API url
-let apiUrlTeddies = "http://localhost:3000/api/teddies";
+//let apiUrlTeddies = "http://localhost:3000/api/teddies";
 let apiUrlCameras = "http://localhost:3000/api/cameras";
-let apiUrlFurniture = "http://localhost:3000/api/furniture";
+//let apiUrlFurniture = "http://localhost:3000/api/furniture";
 
 //Items requests
 const getItems = () => {
-    fetch(apiUrlTeddies)
+/*    fetch(apiUrlTeddies)
         .then((response) => response.json())
         .then(function (item) {
             for (i = 0; i < item.length; i++) {
@@ -13,7 +13,7 @@ const getItems = () => {
             }
         })
         .catch((error) => {alert("Something went wrong please try again...")})
-
+*/
     fetch(apiUrlCameras)
         .then((response) => response.json())
         .then(function (item) {
@@ -23,7 +23,7 @@ const getItems = () => {
         })
         .catch((error) => {alert("Something went wrong please try again...")})
 
-    fetch(apiUrlFurniture)
+/*    fetch(apiUrlFurniture)
         .then((response) => response.json())
         .then(function (item) {
             for (i = 0; i < item.length; i++) {
@@ -31,6 +31,7 @@ const getItems = () => {
             }
         })
         .catch((error) => {alert("Something went wrong please try again...")})
+*/        
 };
 // Execute on load page
 window.onload = getItems;
