@@ -165,6 +165,37 @@
   font-size: 20px;
 }
 
+#cart img {
+  height: 50px;
+  width: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+  padding: 0px;
+  margin: 10px 0px;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+#cart img:hover {
+  -webkit-transform: scale(3, 3);
+          transform: scale(3, 3);
+  margin-left: 50px;
+}
+
+#cart .itemList {
+  margin: 0px 10%;
+  background-color: #f1f1f1;
+  border-radius: 25px;
+  padding: 30px;
+}
+
+#cart .itemList td {
+  font-family: Raleway;
+  font-weight: 400;
+  font-size: 20px;
+}
+
 nav {
   background-color: #f1f1f1;
 }

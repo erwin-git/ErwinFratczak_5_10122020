@@ -80,19 +80,43 @@ fetch(url)
         buttonCart.className = "btn btn-primary float-end";
         buttonCart.innerHTML = "Ajouter au panier";
         colRight.appendChild(buttonCart);
+        buttonCart.onclick =  addToCart
         
-        //Continue or go to cart 
-        buttonCart.onclick =  goToCart
-        function goToCart() {
-        var r = confirm("Votre article a été ajouté au Panier\n\nVoulez-vous voir le Panier?");
-            if (r == true) {
-                window.location.href = "cart.html"
-            } else {
+        //add to cart
+        function addToCart() {
+            let select = document.querySelector('select');
+            let itemLenses = select.selectedIndex;
+            if( itemLenses == 0 ){
+                alert("Vous devez d'abord choisir une lentille !");
+            }else{
+                let itemCart = {
+                    id : product._id,
+                    name : product.name,
+                    price : product.price,
+                    description : product.description,
+                    imageUrl : product.imageUrl,
+                }
+                let lensesCart = JSON.stringify(itemCart);
+                localStorage.setItem(product._id, lensesCart);
 
-            }
-        }
-
+                //Continue or go to cart 
+                var r = confirm("Votre article a été ajouté au Panier\n\nVoulez-vous voir le Panier?");
+                    if (r == true) {
+                        window.location.href = "cart.html"
+                    } else {}
+                
+                }
+        }  
+    
 })
     .catch(error => console.error(error));
+
+
+
+
+
+
+
+
 
 
