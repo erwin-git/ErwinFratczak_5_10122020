@@ -215,6 +215,8 @@
 }
 
 #cart .itemList {
+  overflow-y: scroll;
+  height: 600px;
   margin: 0px 10%;
   background-color: #f1f1f1;
   border-radius: 25px;
@@ -242,7 +244,7 @@
   background-color: #985eea;
   color: #FFF;
   padding: 30px;
-  margin: -60px 20px 0 0;
+  margin: -60px 60px -60px 0;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -258,6 +260,73 @@
   border-radius: 10px;
 }
 
+#cart #buttons {
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  display: -ms-grid;
+  display: grid;
+  margin: 0px 10%;
+}
+
+#cart #buttons #removeCart {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  margin: 50px;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  -ms-grid-column-align: self-start;
+      justify-self: self-start;
+  background-color: #ea5e5e;
+  border-color: #985eea;
+  border-radius: 10px;
+  padding: 10px 30px;
+}
+
+#cart #buttons #removeCart:hover {
+  background-color: #aa0c0c;
+  border-color: #6402ec;
+}
+
+#cart #buttons .shopping {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  margin: 50px;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  -ms-grid-column-align: self-start;
+      justify-self: self-start;
+  background-color: #4ec6a6;
+  border-color: #985eea;
+  border-radius: 10px;
+  padding: 10px 30px;
+}
+
+#cart #buttons .shopping:hover {
+  background-color: #77fabd;
+  border-color: #6402ec;
+}
+
+#cart #form {
+  display: -ms-grid;
+  display: grid;
+  margin: 0px 10%;
+  background-color: #f1f1f1;
+  border-radius: 25px;
+  padding: 30px;
+}
+
+#cart #form h3 {
+  font-family: raleway;
+  font-weight: 400;
+  font-size: 40px;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
 nav {
   background-color: #f1f1f1;
 }
@@ -270,9 +339,7 @@ nav #inCart {
   border-radius: 100%;
   font-family: raleway;
   font-weight: 600;
-  opacity: 80%;
-  top: 2px;
-  right: 11%;
+  opacity: 90%;
   color: #FFF;
 }
 
@@ -303,6 +370,11 @@ nav .icons {
   margin-right: 15px;
 }
 
+header {
+  display: -ms-grid;
+  display: grid;
+}
+
 header h1 {
   font-family: raleway;
   font-weight: 400;
@@ -331,6 +403,22 @@ header h2 {
   background-position: 75% 80%;
   background-repeat: no-repeat;
   background-size: 50% 5%;
+}
+
+header #inCart {
+  text-align: center;
+  -ms-grid-column-align: self-end;
+      justify-self: self-end;
+  z-index: 1;
+  background: red;
+  padding: 10px 30px;
+  margin: 0px 8% -40px 0px;
+  border-radius: 100%;
+  font-family: raleway;
+  font-weight: 600;
+  font-size: 40px;
+  opacity: 90%;
+  color: #FFF;
 }
 
 .card {

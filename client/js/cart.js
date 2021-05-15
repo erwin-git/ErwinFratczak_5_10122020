@@ -109,7 +109,9 @@ for (var i = 0; i < items.length; i++) {
     tr.appendChild(tdPrice);
 
 }
-
+//-------------------------------------------
+//nombre d'article et prix total--------------------------------------
+//------------------------------------------------------------
 //total items
 let total = 0;
 for (var i = 0; i < items.length; i++) {
@@ -118,7 +120,7 @@ for (var i = 0; i < items.length; i++) {
 
 let totalPrice = document.createElement("p");
 totalPrice.className = "prixTotal";
-totalPrice.innerHTML = total/100 + " €";
+totalPrice.innerHTML = "Prix total: " + total/100 + " €";
 fullCart.appendChild(totalPrice);
 
 //items in cart
@@ -133,5 +135,102 @@ function inCart() {
         document.getElementById("inCart").innerHTML = inCartNumber;    
     }
 }
+//buttons 
+let buttons = document.createElement("div");
+buttons.setAttribute("id","buttons")
+cart.appendChild(buttons);
+
+//Continue shopping
+let shopping = document.createElement("button");
+shopping.onclick = goHome
+shopping.className = "btn btn-primary shopping";
+shopping.innerHTML = "Continuer vos achats";
+buttons.appendChild(shopping);
+/*----------------------------------------------------------------------------------------
+//Go to form
+let goToForm = document.createElement("button");
+goToForm.onclick = goForm
+goToForm.className = "btn btn-primary goToForm";
+goToForm.innerHTML = "Valider vôtre commande";
+buttons.appendChild(goToForm);
+function goForm(){
+    window.location.href = "#Form"
+};
+-------------------------------------------------------------------------------------------*/
+
+
+
+//remove cart
+let removeCart = document.createElement("button");
+removeCart.setAttribute("id","removeCart")
+removeCart.className = "btn btn-primary" 
+removeCart.innerHTML = "Annuler le panier"
+buttons.appendChild(removeCart);
+
+removeCart.addEventListener('click', function () {
+    localStorage.clear();
+    location.reload();
+});
+
+
+//form div
+let form = document.createElement("div");
+form.setAttribute("id","form")
+cart.appendChild(form);
+
+let formTitle = document.createElement("h3")
+formTitle.className = "formTitle"
+formTitle.innerHTML = "Formulaire"
+form.appendChild(formTitle)
+
+//contact form creation
+// First name and Last name row
+let namesRow = document.createElement("div")
+namesRow.className = "row"
+form.appendChild(namesRow)
+
+
+
+
+
+
+
+//First name col
+let firstNameCol = document.createElement("div")
+firstNameCol.className = "col"
+namesRow.appendChild(firstNameCol)
+//First name label
+let firstNamelabel = document.createElement("label")
+firstNamelabel.setAttribute("for","firstName")
+firstNamelabel.className = "form-label"
+firstNamelabel.innerHTML = "Prénom"
+firstNameCol.appendChild(firstNamelabel)
+//First name input
+let firstNameinput = document.createElement("input")
+firstNameinput.setAttribute("type","text")
+firstNameinput.setAttribute("id","firstName")
+firstNameinput.setAttribute("placeholder","Prénom")
+firstNameinput.setAttribute("aria-label","Last name")
+firstNameinput.className = "form-control"
+firstNameCol.appendChild(firstNameinput)
+
+//Last name col
+let lastNameCol = document.createElement("div")
+lastNameCol.className = "col"
+namesRow.appendChild(lastNameCol)
+//Last name label
+let lastNamelabel = document.createElement("label")
+lastNamelabel.setAttribute("for","lastName")
+lastNamelabel.className = "form-label"
+lastNamelabel.innerHTML = "Nom"
+lastNameCol.appendChild(lastNamelabel)
+//Last name input
+let lastNameinput = document.createElement("input")
+lastNameinput.setAttribute("type","text")
+lastNameinput.setAttribute("id","lastName")
+lastNameinput.setAttribute("placeholder","Nom")
+lastNameinput.setAttribute("aria-label","Last name")
+lastNameinput.className = "form-control"
+lastNameCol.appendChild(lastNameinput)
 
 
