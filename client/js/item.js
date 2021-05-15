@@ -80,8 +80,9 @@ fetch(url)
         buttonCart.className = "btn btn-primary float-end";
         buttonCart.innerHTML = "Ajouter au panier";
         colRight.appendChild(buttonCart);
-        buttonCart.onclick =  addToCart
+        buttonCart.onclick =  addToCart;
         
+
         //add to cart
         function addToCart() {
             let select = document.querySelector('select');
@@ -89,15 +90,16 @@ fetch(url)
             if( itemLenses == 0 ){
                 alert("Vous devez d'abord choisir une lentille !");
             }else{
-                let itemCart = {
+                let itemsInfo =  {
                     id : product._id,
                     name : product.name,
                     price : product.price,
-                    description : product.description,
                     imageUrl : product.imageUrl,
-                }
-                let lensesCart = JSON.stringify(itemCart);
-                localStorage.setItem(product._id, lensesCart);
+                };
+                let items = JSON.parse(localStorage.getItem('items') || '[]');
+                items.push(itemsInfo);
+                localStorage.setItem('items', JSON.stringify(items))
+                inCart();
 
                 //Continue or go to cart 
                 var r = confirm("Votre article a été ajouté au Panier\n\nVoulez-vous voir le Panier?");
@@ -111,8 +113,18 @@ fetch(url)
 })
     .catch(error => console.error(error));
 
+//items in cart
+function inCart() {
+    let arrayFromStroage = JSON.parse(localStorage.getItem("items"));
+    var inCartNumber = arrayFromStroage.length;
 
-
+    if (inCartNumber === null) {
+        let inCartNumberNull = document.getElementById("inCart")
+        inCartNumberNull.style.display = "none"
+    } else {
+        document.getElementById("inCart").innerHTML = inCartNumber;    
+    }
+}
 
 
 

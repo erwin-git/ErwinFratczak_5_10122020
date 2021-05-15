@@ -1,13 +1,41 @@
-
+// container init
 let cart = document.getElementById("cart");
 
-// items list
-let items = [];
+//empty cart
+let emptyCart = document.createElement("div");
+emptyCart.setAttribute("id","emptyCart")
+cart.appendChild(emptyCart);
 
-//div summary
+let emptyCartTitle = document.createElement("h3");
+emptyCartTitle.innerHTML = "Votre panier est vide !";
+emptyCart.appendChild(emptyCartTitle);
+//Button go home
+let goHomeBtn = document.createElement("button");
+goHomeBtn.onclick = goHome
+goHomeBtn.className = "btn btn-primary goHomeBtn";
+goHomeBtn.innerHTML = "Voir les produits";
+emptyCart.appendChild(goHomeBtn);
+//function go home
+function goHome(){
+    window.location.href = "index.html"
+};
+
+//full cart
+let fullCart = document.createElement("div");
+fullCart.setAttribute("id","fullCart")
+cart.appendChild(fullCart);
+
+//if empty show emptyCart
+if (localStorage.getItem('items') === null) {
+    fullCart.style.display = "none";
+} else {
+    emptyCart.style.display = "none";
+}
+
+//div list
 let itemList = document.createElement("div");
 itemList.className = "itemList";
-cart.appendChild(itemList);
+fullCart.appendChild(itemList);
 
 //table header
 let table = document.createElement("table");
@@ -49,10 +77,8 @@ trHead.appendChild(priceCol);
 let tBody = document.createElement("tbody");
 table.appendChild(tBody);
 
-//localStorage loop
-let lensesCart = Object.keys(localStorage);
-for (i=0; i < lensesCart.length; i++) {
-    let product = JSON.parse(localStorage.getItem(lensesCart[i]))
+var items = JSON.parse(localStorage.getItem('items'));
+for (var i = 0; i < items.length; i++) {
 
     //table body rows
     let tr = document.createElement("tr");
@@ -62,11 +88,11 @@ for (i=0; i < lensesCart.length; i++) {
     let tdForImg = document.createElement("td");
     tr.appendChild(tdForImg);
     let tdImg = document.createElement("img");
-    tdImg.setAttribute('src', product.imageUrl);
+    tdImg.setAttribute('src', items[i].imageUrl);
     tdForImg.appendChild(tdImg);
 
     //Body - Product name
-    let id = product.id;
+    let id = items[i].id;
     let shortID = id.substr(-6);
     let tdId = document.createElement("td");
     tdId.innerHTML = shortID
@@ -74,13 +100,38 @@ for (i=0; i < lensesCart.length; i++) {
 
     //Body - Product name
     let tdName = document.createElement("td");
-    tdName.innerHTML = product.name;
+    tdName.innerHTML = items[i].name;
     tr.appendChild(tdName);
 
     //Body - Product price
     let tdPrice = document.createElement("td");
-    tdPrice.innerHTML = product.price/100 + " €";
+    tdPrice.innerHTML = items[i].price/100 + " €";
     tr.appendChild(tdPrice);
 
-    items.push(product);
 }
+
+//total items
+let total = 0;
+for (var i = 0; i < items.length; i++) {
+    total += items[i].price;
+}
+
+let totalPrice = document.createElement("p");
+totalPrice.className = "prixTotal";
+totalPrice.innerHTML = total/100 + " €";
+fullCart.appendChild(totalPrice);
+
+//items in cart
+function inCart() {
+    let arrayFromStroage = JSON.parse(localStorage.getItem("items"));
+    var inCartNumber = arrayFromStroage.length;
+
+    if (inCartNumber === null) {
+        let inCartNumberNull = document.getElementById("inCart")
+        inCartNumberNull.style.display = "none"
+    } else {
+        document.getElementById("inCart").innerHTML = inCartNumber;    
+    }
+}
+
+

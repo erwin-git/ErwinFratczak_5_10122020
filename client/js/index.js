@@ -32,6 +32,8 @@ const getItems = () => {
         })
         .catch((error) => {alert("Something went wrong please try again...")})
 */        
+    inCart()
+
 };
 // Execute on load page
 window.onload = getItems;
@@ -98,3 +100,16 @@ const insertItem = (produit) => {
     
     //bsColumn.appendChild(main);
 };
+
+//items in cart
+function inCart() {
+    let arrayFromStroage = JSON.parse(localStorage.getItem("items"));
+    var inCartNumber = arrayFromStroage.length;
+
+    if (inCartNumber === null) {
+        let inCartNumberNull = document.getElementById("inCart")
+        inCartNumberNull.style.display = "none"
+    } else {
+        document.getElementById("inCart").innerHTML = inCartNumber;    
+    }
+}
