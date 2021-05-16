@@ -171,11 +171,12 @@ removeCart.addEventListener('click', function () {
     localStorage.clear();
     location.reload();
 });
-
+//--------------------------------------FORM---------------------------------------------------------------
 
 //form div
-let form = document.createElement("div");
-form.setAttribute("id","form")
+let form = document.createElement("form");
+form.setAttribute("id","contact")
+form.className = "form"
 cart.appendChild(form);
 
 let formTitle = document.createElement("h3")
@@ -188,11 +189,6 @@ form.appendChild(formTitle)
 let namesRow = document.createElement("div")
 namesRow.className = "row"
 form.appendChild(namesRow)
-
-
-
-
-
 
 
 //First name col
@@ -209,7 +205,7 @@ firstNameCol.appendChild(firstNamelabel)
 let firstNameinput = document.createElement("input")
 firstNameinput.setAttribute("type","text")
 firstNameinput.setAttribute("id","firstName")
-firstNameinput.setAttribute("placeholder","Prénom")
+firstNameinput.setAttribute("placeholder","Votre prénom")
 firstNameinput.setAttribute("aria-label","Last name")
 firstNameinput.className = "form-control"
 firstNameCol.appendChild(firstNameinput)
@@ -228,9 +224,99 @@ lastNameCol.appendChild(lastNamelabel)
 let lastNameinput = document.createElement("input")
 lastNameinput.setAttribute("type","text")
 lastNameinput.setAttribute("id","lastName")
-lastNameinput.setAttribute("placeholder","Nom")
+lastNameinput.setAttribute("placeholder","Votre nom")
 lastNameinput.setAttribute("aria-label","Last name")
 lastNameinput.className = "form-control"
 lastNameCol.appendChild(lastNameinput)
+
+// adress e-mail
+let eMailDiv = document.createElement("div")
+eMailDiv.className = "mb-3"
+form.appendChild(eMailDiv)
+
+//adress e-mail label
+let eMaillabel = document.createElement("label")
+eMaillabel.setAttribute("for","eMail")
+eMaillabel.className = "form-label"
+eMaillabel.innerHTML = "e-Mail"
+eMail.appendChild(eMaillabel)
+//adress e-mail input
+let eMailinput = document.createElement("input")
+eMailinput.setAttribute("type","text")
+eMailinput.setAttribute("id","eMail")
+eMailinput.setAttribute("placeholder","Votre e-Mail")
+eMailinput.setAttribute("aria-label","e-Mail")
+eMailinput.className = "form-control"
+eMailDiv.appendChild(eMailinput)
+
+// adress
+let adressDiv = document.createElement("div")
+adressDiv.className = "mb-3"
+form.appendChild(adressDiv)
+
+//adress  label
+let adresslabel = document.createElement("label")
+adresslabel.setAttribute("for","adress")
+adresslabel.className = "form-label"
+adresslabel.innerHTML = "Adresse"
+adressDiv.appendChild(adresslabel)
+//adress  input
+let adressinput = document.createElement("input")
+adressinput.setAttribute("type","text")
+adressinput.setAttribute("id","adress")
+adressinput.setAttribute("placeholder","Votre adresse")
+adressinput.setAttribute("aria-label","Adresse")
+adressinput.className = "form-control"
+adressDiv.appendChild(adressinput)
+
+// City
+let cityDiv = document.createElement("div")
+cityDiv.className = "mb-3"
+form.appendChild(cityDiv)
+
+//city label
+let citylabel = document.createElement("label")
+citylabel.setAttribute("for","city")
+citylabel.className = "form-label"
+citylabel.innerHTML = "Ville"
+cityDiv.appendChild(citylabel)
+//city input
+let cityinput = document.createElement("input")
+cityinput.setAttribute("type","text")
+cityinput.setAttribute("id","city")
+cityinput.setAttribute("placeholder","Votre ville")
+cityinput.setAttribute("aria-label","Ville")
+cityinput.className = "form-control"
+cityDiv.appendChild(cityinput)
+
+// Confirm button
+let confirm = document.createElement("div")
+confirm.className = "mb-3 confirmDiv"
+form.appendChild(confirm)
+
+let confirmBtn = document.createElement("button");
+confirmBtn.setAttribute("type","submit")
+confirmBtn.setAttribute("id","contact-submit")
+confirmBtn.className = "btn btn-primary" 
+confirmBtn.innerHTML = "Valider votre commande"
+confirm.appendChild(confirmBtn);
+
+//-----------------------------------------------------------------------------------------------------
+
+//Regex input control
+let strCheck = /[a-zA-Z]/;
+let intCheck = /[0-9]/;
+let specialCheck = /[§!@#$%^&*(),.?":{}|<>]/;
+let emailCheck = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i ;
+
+//get inputs for form
+
+let firstName = firstNameinput.value;
+let lastName = lastNameinput.value;
+let eMail = eMailinput.value;
+let adress = adressinput.value;
+let city = cityinput.value;
+
+
 
 
