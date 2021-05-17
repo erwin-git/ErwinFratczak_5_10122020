@@ -83,7 +83,7 @@ delivAdressDiv.appendChild(city);
 //total price
 //total price div
 let totamPriceDiv = document.createElement("div");
-totamPriceDiv.setAttribute("id","delivAdressDiv");
+totamPriceDiv.setAttribute("id","totamPriceDiv");
 confirmDiv2.appendChild(totamPriceDiv);
 
 //total price title
@@ -97,6 +97,6 @@ totamPrice.className = "totamPrice"
 totamPrice.innerHTML = `${total}`/100 + " €"
 totamPriceDiv.appendChild(totamPrice);
 
-localStorage.removeItem('contact');
-localStorage.removeItem('total');
-localStorage.removeItem('orderId');
+//localStorage.removeItem('contact');
+//localStorage.removeItem('total');
+//localStorage.removeItem('orderId');

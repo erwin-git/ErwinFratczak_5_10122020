@@ -363,6 +363,138 @@
   border-radius: 10px;
 }
 
+#confirmation {
+  display: -ms-grid;
+  display: grid;
+  margin: 40px 10% 0px;
+  background-color: #f1f1f1;
+  border-radius: 25px;
+  padding: 30px;
+}
+
+#confirmation #confirmDiv {
+  display: -ms-grid;
+  display: grid;
+}
+
+#confirmation #confirmDiv i {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  color: green;
+  font-size: 80px;
+  text-align: center;
+  margin-top: -70px;
+}
+
+#confirmation #confirmDiv .thxTitle {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  font-family: raleway;
+  font-weight: 400;
+  font-size: 40px;
+}
+
+#confirmation #confirmDiv .thxTitle2 {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  font-family: roboto;
+  font-weight: 200;
+  font-size: 30px;
+}
+
+#confirmation #confirmDiv .confNumDiv {
+  display: -ms-grid;
+  display: grid;
+}
+
+#confirmation #confirmDiv .confNumDiv .confNumTitle {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  justify-self: center;
+  font-family: roboto;
+  font-weight: 200;
+  font-size: 30px;
+}
+
+#confirmation #confirmDiv .confNumDiv .confNum {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  font-family: raleway;
+  font-weight: 400;
+  font-size: 40px;
+  color: green;
+}
+
+#confirmation #confirmDiv2 {
+  display: -ms-grid;
+  display: grid;
+}
+
+#confirmation #confirmDiv2 #delivAdressDiv {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+}
+
+#confirmation #confirmDiv2 #delivAdressDiv .delivAdressTitle {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  font-family: roboto;
+  font-weight: 200;
+  font-size: 30px;
+}
+
+#confirmation #confirmDiv2 #delivAdressDiv .flName {
+  margin-left: 20px;
+  font-family: raleway;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+#confirmation #confirmDiv2 #delivAdressDiv .address {
+  margin-left: 20px;
+  font-family: raleway;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: -15px;
+}
+
+#confirmation #confirmDiv2 #delivAdressDiv .city {
+  margin-left: 20px;
+  font-family: raleway;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: -15px;
+}
+
+#confirmation #confirmDiv2 #totamPriceDiv {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+#confirmation #confirmDiv2 #totamPriceDiv .totamPriceTitle {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  font-family: roboto;
+  font-weight: 200;
+  font-size: 30px;
+}
+
+#confirmation #confirmDiv2 #totamPriceDiv .totamPrice {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  font-family: raleway;
+  font-weight: 600;
+  font-size: 40px;
+}
+
 nav {
   background-color: #f1f1f1;
 }
