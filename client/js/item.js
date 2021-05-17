@@ -4,7 +4,7 @@ const params = new URLSearchParams(window.location.search);
 let apiId = params.get("id");
 let url = apiUrlCameras + apiId ;
 
-
+// put in product
 fetch(url)
     .then((response) => response.json())
     .then(product => {
@@ -66,7 +66,7 @@ fetch(url)
         defaultOption.setAttribute('value', 0 );
         defaultOption.textContent = "Faites votre choix";
         selectItem.appendChild(defaultOption);
-
+        //get all options
         let optionItem = product.lenses
             for (let i = 0; i < optionItem.length; i++) {
             let options = document.createElement('option');
@@ -113,16 +113,17 @@ fetch(url)
 })
     .catch(error => console.error(error));
 
-//items in cart
+//items in cart ---------------------------------IDS
 function inCart() {
-    let arrayFromStroage = JSON.parse(localStorage.getItem("items"));
-    var inCartNumber = arrayFromStroage.length;
-
-    if (inCartNumber === null) {
+    if (inCartNumber !== null) {
+        let inCartNumberNull = document.getElementById("inCart")
+        inCartNumberNull.style.display = "inline"
+        let arrayFromStroage = JSON.parse(localStorage.getItem("items"));
+        var inCartNumber = arrayFromStroage.length;
+        document.getElementById("inCart").innerHTML = inCartNumber;
+    } else {
         let inCartNumberNull = document.getElementById("inCart")
         inCartNumberNull.style.display = "none"
-    } else {
-        document.getElementById("inCart").innerHTML = inCartNumber;    
     }
 }
 

@@ -101,15 +101,16 @@ const insertItem = (produit) => {
     //bsColumn.appendChild(main);
 };
 
-//items in cart
+//items in cart ---------------------------------IDS
 function inCart() {
-    let arrayFromStroage = JSON.parse(localStorage.getItem("items"));
-    var inCartNumber = arrayFromStroage.length;
-
-    if (inCartNumber === null) {
+    if (inCartNumber !== null) {
+        let inCartNumberNull = document.getElementById("inCart")
+        inCartNumberNull.style.display = "inline"
+        let arrayFromStroage = JSON.parse(localStorage.getItem("items"));
+        var inCartNumber = arrayFromStroage.length;
+        document.getElementById("inCart").innerHTML = inCartNumber;
+    } else {
         let inCartNumberNull = document.getElementById("inCart")
         inCartNumberNull.style.display = "none"
-    } else {
-        document.getElementById("inCart").innerHTML = inCartNumber;    
     }
 }

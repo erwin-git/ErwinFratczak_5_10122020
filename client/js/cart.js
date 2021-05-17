@@ -1,7 +1,11 @@
 // container init
 let cart = document.getElementById("cart");
 
+//------------------------------------------------
+
 //empty cart
+
+//empty cart div
 let emptyCart = document.createElement("div");
 emptyCart.setAttribute("id","emptyCart")
 cart.appendChild(emptyCart);
@@ -20,7 +24,11 @@ function goHome(){
     window.location.href = "index.html"
 };
 
+//-----------------------------------------------
+
 //full cart
+
+//full cart div
 let fullCart = document.createElement("div");
 fullCart.setAttribute("id","fullCart")
 cart.appendChild(fullCart);
@@ -77,6 +85,7 @@ trHead.appendChild(priceCol);
 let tBody = document.createElement("tbody");
 table.appendChild(tBody);
 
+// get products and put in table
 var items = JSON.parse(localStorage.getItem('items'));
 for (var i = 0; i < items.length; i++) {
 
@@ -110,35 +119,44 @@ for (var i = 0; i < items.length; i++) {
 
 }
 //-------------------------------------------
-//nombre d'article et prix total--------------------------------------
-//------------------------------------------------------------
+
+//total price
+
 //total items
 let total = 0;
 for (var i = 0; i < items.length; i++) {
     total += items[i].price;
 }
-
+//total price
 let totalPrice = document.createElement("p");
 totalPrice.className = "prixTotal";
 totalPrice.innerHTML = "Prix total: " + total/100 + " €";
 fullCart.appendChild(totalPrice);
 
-//items in cart
-function inCart() {
-    let arrayFromStroage = JSON.parse(localStorage.getItem("items"));
-    var inCartNumber = arrayFromStroage.length;
 
-    if (inCartNumber === null) {
+//items in cart ---------------------------------IDS
+function inCart() {
+    if (inCartNumber !== null) {
+        let inCartNumberNull = document.getElementById("inCart")
+        inCartNumberNull.style.display = "inline"
+        let arrayFromStroage = JSON.parse(localStorage.getItem("items"));
+        var inCartNumber = arrayFromStroage.length;
+        document.getElementById("inCart").innerHTML = inCartNumber;
+    } else {
         let inCartNumberNull = document.getElementById("inCart")
         inCartNumberNull.style.display = "none"
-    } else {
-        document.getElementById("inCart").innerHTML = inCartNumber;    
     }
 }
-//buttons 
+
+//-------------------------------
+
+//buttons
+
+//buttons div
 let buttons = document.createElement("div");
 buttons.setAttribute("id","buttons")
 cart.appendChild(buttons);
+
 
 //Continue shopping
 let shopping = document.createElement("button");
@@ -146,18 +164,6 @@ shopping.onclick = goHome
 shopping.className = "btn btn-primary shopping";
 shopping.innerHTML = "Continuer vos achats";
 buttons.appendChild(shopping);
-/*----------------------------------------------------------------------------------------
-//Go to form
-let goToForm = document.createElement("button");
-goToForm.onclick = goForm
-goToForm.className = "btn btn-primary goToForm";
-goToForm.innerHTML = "Valider vôtre commande";
-buttons.appendChild(goToForm);
-function goForm(){
-    window.location.href = "#Form"
-};
--------------------------------------------------------------------------------------------*/
-
 
 
 //remove cart
@@ -171,12 +177,17 @@ removeCart.addEventListener('click', function () {
     localStorage.clear();
     location.reload();
 });
-//--------------------------------------FORM---------------------------------------------------------------
+
+//-----------------------------
+
+// contact form
 
 //form div
 let form = document.createElement("form");
-form.setAttribute("id","contact")
-form.className = "form"
+form.setAttribute("id","form")
+form.setAttribute("action","post")
+form.setAttribute("type","submit")
+form.className = "contact__form"
 cart.appendChild(form);
 
 let formTitle = document.createElement("h3")
@@ -197,14 +208,14 @@ firstNameCol.className = "col"
 namesRow.appendChild(firstNameCol)
 //First name label
 let firstNamelabel = document.createElement("label")
-firstNamelabel.setAttribute("for","firstName")
+firstNamelabel.setAttribute("for","firstname")
 firstNamelabel.className = "form-label"
 firstNamelabel.innerHTML = "Prénom"
 firstNameCol.appendChild(firstNamelabel)
 //First name input
 let firstNameinput = document.createElement("input")
 firstNameinput.setAttribute("type","text")
-firstNameinput.setAttribute("id","firstName")
+firstNameinput.setAttribute("id","firstname")
 firstNameinput.setAttribute("placeholder","Votre prénom")
 firstNameinput.setAttribute("aria-label","Last name")
 firstNameinput.className = "form-control"
@@ -216,64 +227,64 @@ lastNameCol.className = "col"
 namesRow.appendChild(lastNameCol)
 //Last name label
 let lastNamelabel = document.createElement("label")
-lastNamelabel.setAttribute("for","lastName")
+lastNamelabel.setAttribute("for","lastname")
 lastNamelabel.className = "form-label"
 lastNamelabel.innerHTML = "Nom"
 lastNameCol.appendChild(lastNamelabel)
 //Last name input
 let lastNameinput = document.createElement("input")
 lastNameinput.setAttribute("type","text")
-lastNameinput.setAttribute("id","lastName")
+lastNameinput.setAttribute("id","lastname")
 lastNameinput.setAttribute("placeholder","Votre nom")
 lastNameinput.setAttribute("aria-label","Last name")
 lastNameinput.className = "form-control"
 lastNameCol.appendChild(lastNameinput)
 
-// adress e-mail
+
+// adress e-mail div
 let eMailDiv = document.createElement("div")
 eMailDiv.className = "mb-3"
 form.appendChild(eMailDiv)
-
 //adress e-mail label
 let eMaillabel = document.createElement("label")
-eMaillabel.setAttribute("for","eMail")
+eMaillabel.setAttribute("for","email")
 eMaillabel.className = "form-label"
 eMaillabel.innerHTML = "e-Mail"
-eMail.appendChild(eMaillabel)
+eMailDiv.appendChild(eMaillabel)
 //adress e-mail input
 let eMailinput = document.createElement("input")
-eMailinput.setAttribute("type","text")
-eMailinput.setAttribute("id","eMail")
+eMailinput.setAttribute("type","email")
+eMailinput.setAttribute("id","email")
 eMailinput.setAttribute("placeholder","Votre e-Mail")
 eMailinput.setAttribute("aria-label","e-Mail")
 eMailinput.className = "form-control"
 eMailDiv.appendChild(eMailinput)
 
-// adress
+
+// adress div
 let adressDiv = document.createElement("div")
 adressDiv.className = "mb-3"
 form.appendChild(adressDiv)
-
 //adress  label
 let adresslabel = document.createElement("label")
-adresslabel.setAttribute("for","adress")
+adresslabel.setAttribute("for","address")
 adresslabel.className = "form-label"
 adresslabel.innerHTML = "Adresse"
 adressDiv.appendChild(adresslabel)
 //adress  input
 let adressinput = document.createElement("input")
 adressinput.setAttribute("type","text")
-adressinput.setAttribute("id","adress")
+adressinput.setAttribute("id","address")
 adressinput.setAttribute("placeholder","Votre adresse")
 adressinput.setAttribute("aria-label","Adresse")
 adressinput.className = "form-control"
 adressDiv.appendChild(adressinput)
 
-// City
+
+// City div
 let cityDiv = document.createElement("div")
 cityDiv.className = "mb-3"
 form.appendChild(cityDiv)
-
 //city label
 let citylabel = document.createElement("label")
 citylabel.setAttribute("for","city")
@@ -289,34 +300,17 @@ cityinput.setAttribute("aria-label","Ville")
 cityinput.className = "form-control"
 cityDiv.appendChild(cityinput)
 
-// Confirm button
+
+// Confirm button div
 let confirm = document.createElement("div")
 confirm.className = "mb-3 confirmDiv"
 form.appendChild(confirm)
-
+// Confirm button
 let confirmBtn = document.createElement("button");
-confirmBtn.setAttribute("type","submit")
-confirmBtn.setAttribute("id","contact-submit")
-confirmBtn.className = "btn btn-primary" 
+confirmBtn.setAttribute("id","submit")
+confirmBtn.className = "btn btn-primary validate" 
 confirmBtn.innerHTML = "Valider votre commande"
 confirm.appendChild(confirmBtn);
-
-//-----------------------------------------------------------------------------------------------------
-
-//Regex input control
-let strCheck = /[a-zA-Z]/;
-let intCheck = /[0-9]/;
-let specialCheck = /[§!@#$%^&*(),.?":{}|<>]/;
-let emailCheck = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i ;
-
-//get inputs for form
-
-let firstName = firstNameinput.value;
-let lastName = lastNameinput.value;
-let eMail = eMailinput.value;
-let adress = adressinput.value;
-let city = cityinput.value;
-
 
 
 
