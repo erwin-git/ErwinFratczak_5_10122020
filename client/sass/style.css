@@ -372,6 +372,28 @@
   padding: 30px;
 }
 
+#confirmation #confirmEmptyDiv {
+  display: -ms-grid;
+  display: grid;
+}
+
+#confirmation #confirmEmptyDiv i {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  color: red;
+  font-size: 100px;
+  text-align: center;
+  margin-top: -70px;
+}
+
+#confirmation #confirmEmptyDiv .badTitle {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  font-family: raleway;
+  font-weight: 400;
+  font-size: 40px;
+}
+
 #confirmation #confirmDiv {
   display: -ms-grid;
   display: grid;

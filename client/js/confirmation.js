@@ -5,10 +5,44 @@ const total = JSON.parse(localStorage.getItem('total'));
 
 let confirmation = document.getElementById("confirmation");
 
+//confirmation empty
+let confirmationEmpty = document.createElement("div");
+confirmationEmpty.setAttribute("id","confirmationEmpty");
+confirmation.appendChild(confirmationEmpty);
+
+let confirmEmptyDiv = document.createElement("div");
+confirmEmptyDiv.setAttribute("id","confirmEmptyDiv");
+confirmationEmpty.appendChild(confirmEmptyDiv);
+
+//OK icon
+let badIcon = document.createElement("i");
+badIcon.className = "far fa-frown";
+confirmEmptyDiv.appendChild(badIcon);
+
+//Thx h3
+let badTitle = document.createElement("p");
+badTitle.className = "badTitle"
+badTitle.innerHTML = "Something went wrong please try again..."
+confirmEmptyDiv.appendChild(badTitle);
+
+//---------------------------------------------
+
+//confirmation full
+let confirmationFull = document.createElement("div");
+confirmationFull.setAttribute("id","confirmationFull");
+confirmation.appendChild(confirmationFull);
+
+//if empty show confirmation empty
+if (localStorage.getItem('contact') === null) {
+    confirmationFull.style.display = "none";
+} else {
+    confirmationEmpty.style.display = "none";
+}
+
 //confirm page init
 let confirmDiv = document.createElement("div");
 confirmDiv.setAttribute("id","confirmDiv");
-confirmation.appendChild(confirmDiv);
+confirmationFull.appendChild(confirmDiv);
 
 //OK icon
 let okIcon = document.createElement("i");
@@ -47,7 +81,7 @@ confNumDiv.appendChild(confNum)
 //confirm div2
 let confirmDiv2 = document.createElement("div");
 confirmDiv2.setAttribute("id","confirmDiv2");
-confirmation.appendChild(confirmDiv2);
+confirmationFull.appendChild(confirmDiv2);
 
 //------------------------------------------------
 //the delivery adress
@@ -97,6 +131,6 @@ totamPrice.className = "totamPrice"
 totamPrice.innerHTML = `${total}`/100 + " €"
 totamPriceDiv.appendChild(totamPrice);
 
-//localStorage.removeItem('contact');
-//localStorage.removeItem('total');
-//localStorage.removeItem('orderId');
+localStorage.removeItem('contact');
+localStorage.removeItem('total');
+localStorage.removeItem('orderId');
