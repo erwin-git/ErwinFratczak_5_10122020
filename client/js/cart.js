@@ -320,6 +320,7 @@ form.addEventListener('submit', e => {
     e.preventDefault();
 });
 
+// sens data form
 function sendData() {
     let contact = {
         firstName: firstNameinput.value,
@@ -329,9 +330,21 @@ function sendData() {
         city: cityinput.value
         
     };
+
+    let products = ids; 
     
     let contactItems = JSON.stringify({
-        contact
+        contact, products
     })
     
 };
+
+//get id function
+function getFields(input, field) {
+    var output = [];
+    for (var i=0; i < input.length ; ++i)
+        output.push(input[i][field]);
+    return output;
+}
+//get ids 
+let ids = getFields(items, "id");
