@@ -312,9 +312,26 @@ confirmBtn.className = "btn btn-primary validate"
 confirmBtn.innerHTML = "Valider votre commande"
 confirm.appendChild(confirmBtn);
 
+//----------------------------------------
+
+
 //form validation
 form.addEventListener('submit', e => {
     e.preventDefault();
 });
 
-
+function sendData() {
+    let contact = {
+        firstName: firstNameinput.value,
+        lastName: lastNameinput.value,
+        email: eMailinput.value,
+        address: adressinput.value,
+        city: cityinput.value
+        
+    };
+    
+    let contactItems = JSON.stringify({
+        contact
+    })
+    
+};
