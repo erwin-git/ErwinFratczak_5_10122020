@@ -314,10 +314,12 @@ confirm.appendChild(confirmBtn);
 
 //----------------------------------------
 
+//sending data
 
 //form validation
 form.addEventListener('submit', e => {
     e.preventDefault();
+    sendData();
 });
 
 // sens data form
@@ -339,7 +341,7 @@ function sendData() {
     
 };
 
-//get id function
+//get ids function
 function getFields(input, field) {
     var output = [];
     for (var i=0; i < input.length ; ++i)
