@@ -187,7 +187,7 @@ let form = document.createElement("form");
 form.setAttribute("id","form")
 form.setAttribute("action","post")
 form.setAttribute("type","submit")
-form.className = "contact__form"
+form.className = "contactForm"
 cart.appendChild(form);
 
 let formTitle = document.createElement("h3")
@@ -312,5 +312,9 @@ confirmBtn.className = "btn btn-primary validate"
 confirmBtn.innerHTML = "Valider votre commande"
 confirm.appendChild(confirmBtn);
 
+//form validation
+form.addEventListener('submit', e => {
+    e.preventDefault();
+});
 
 
