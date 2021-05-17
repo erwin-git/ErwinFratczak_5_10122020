@@ -338,7 +338,7 @@ function sendData() {
     let contactItems = JSON.stringify({
         contact, products
     })
-    
+    postOrder(contactItems);
 };
 
 //get ids function
@@ -350,3 +350,30 @@ function getFields(input, field) {
 }
 //get ids 
 let ids = getFields(items, "id");
+
+//post contact and products and put in localStorage contact, order number and total price and go to confirmation page
+function postOrder(contactItems) {
+
+    fetch("http://localhost:3000/api/cameras/order", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        mode:'cors',
+        body: contactItems
+    }).then(response => {
+
+        return response.json();
+
+    }).then( response => {
+        localStorage.setItem('contact', JSON.stringify(response.contact));
+        localStorage.setItem('orderId', JSON.stringify(response.orderId));
+        localStorage.setItem('total', JSON.stringify(total));
+        localStorage.removeItem('items');
+        window.location.replace("./confirmation.html");
+    })
+    .catch((e) => {
+        displayError();
+        console.log(e);
+    })
+}
