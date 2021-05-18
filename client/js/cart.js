@@ -133,14 +133,12 @@ totalPrice.className = "prixTotal";
 totalPrice.innerHTML = "Prix total: " + total/100 + " €";
 fullCart.appendChild(totalPrice);
 
-
-//items in cart ---------------------------------IDS
+//items in cart 
 function inCart() {
-    if (inCartNumber !== null) {
+    if (ids.length !== null) {
         let inCartNumberNull = document.getElementById("inCart")
         inCartNumberNull.style.display = "inline"
-        let arrayFromStroage = JSON.parse(localStorage.getItem("items"));
-        var inCartNumber = arrayFromStroage.length;
+        var inCartNumber = ids.length
         document.getElementById("inCart").innerHTML = inCartNumber;
     } else {
         let inCartNumberNull = document.getElementById("inCart")
@@ -253,7 +251,7 @@ eMaillabel.innerHTML = "e-Mail"
 eMailDiv.appendChild(eMaillabel)
 //adress e-mail input
 let eMailinput = document.createElement("input")
-eMailinput.setAttribute("type","email")
+eMailinput.setAttribute("type","text")
 eMailinput.setAttribute("id","email")
 eMailinput.setAttribute("placeholder","Votre e-Mail")
 eMailinput.setAttribute("aria-label","e-Mail")
@@ -312,10 +310,8 @@ confirmBtn.className = "btn btn-primary validate"
 confirmBtn.innerHTML = "Valider votre commande"
 confirm.appendChild(confirmBtn);
 
-//----------------------------------------
 
 //sending data
-
 //form validation
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -324,21 +320,80 @@ form.addEventListener('submit', e => {
 
 // sens data form
 function sendData() {
-    let contact = {
-        firstName: firstNameinput.value,
-        lastName: lastNameinput.value,
-        email: eMailinput.value,
-        address: adressinput.value,
-        city: cityinput.value
-        
-    };
-
-    let products = ids; 
+ let contact;
+    //Regex input control
+    //let checkString = /[a-zA-Z]/;
+    let intCheck = /[0-9]/;
+    let specialCheck = /[§!@#$%^&*(),/.?":{}|<>]/;
+    let emailCheck = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i ;
     
-    let contactItems = JSON.stringify({
-        contact, products
-    })
-    postOrder(contactItems);
+    let checkMessage = "";
+
+    //Récupération des inputs
+    let lastName = lastNameinput.value;
+    let firstName = firstNameinput.value;
+    let eMail = eMailinput.value;
+    let adress = adressinput.value;
+    let city = cityinput.value;
+
+        //last name check
+        if(intCheck.test(lastName) == true || specialCheck.test(lastName) == true){
+            checkMessage = "Le champ 'Nom' contient des signes interdits";
+        }else if(lastName == ""){
+            checkMessage = "Le champ 'Nom' est vide";
+        }else{};
+        
+        //first name check
+        if(intCheck.test(firstName) == true || specialCheck.test(firstName) == true){
+            checkMessage = checkMessage + "\n" + "Le champ 'Prénom' contient des signes interdits";
+        }else if(firstName == ""){
+            checkMessage = checkMessage + "\n" + "Le champ 'Prénom' est vide";
+        }else{};
+
+        //email check
+        if(eMail == ""){
+            checkMessage = checkMessage + "\n" + "Le champ 'e-Mail' est vide";
+        }else if(emailCheck.test(eMail) == false){
+            checkMessage = checkMessage + "\n" + "Le champ 'e-Mail' contient des signes interdits";
+        }else{};
+
+        //adress check
+        if(specialCheck.test(adress) == true){
+            checkMessage = checkMessage + "\n" + "Le champ 'Adresse' contient des signes interdits";
+        }else if(adress == ""){
+            checkMessage = checkMessage + "\n" + "Le champ 'Adresse' est vide";
+        }else{};
+
+        //city check
+        if(intCheck.test(city) == true || specialCheck.test(city) == true){
+            checkMessage = checkMessage + "\n" + "Le champ 'Ville' contient des signes interdits";
+        }else if(city == ""){
+            checkMessage = checkMessage + "\n" + "Le champ 'Ville' est vide";
+        }else{};
+
+        if(checkMessage != ""){
+            alert("Erreur" + "\n" + "S'il vous plaît vérifier vos coordonnées :" + "\n\n" + checkMessage);
+        }
+
+        else{
+            contact = {
+                firstName: firstNameinput.value,
+                lastName: lastNameinput.value,
+                email: eMailinput.value,
+                address: adressinput.value,
+                city: cityinput.value
+                
+            };
+
+            let products = ids; 
+    
+            let contactItems = JSON.stringify({
+                contact, products
+            })
+            
+            postOrder(contactItems);
+            //return contact;
+        };
 };
 
 //get ids function
