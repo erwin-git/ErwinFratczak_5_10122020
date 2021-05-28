@@ -82,7 +82,6 @@ fetch(url)
         colRight.appendChild(buttonCart);
         buttonCart.onclick =  addToCart;
         
-
         //add to cart
         function addToCart() {
             let select = document.querySelector('select');

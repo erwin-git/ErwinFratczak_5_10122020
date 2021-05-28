@@ -81,6 +81,7 @@ priceCol.setAttribute("scope", "col");
 priceCol.innerHTML = "PRIX";
 trHead.appendChild(priceCol);
 
+
 //table body
 let tBody = document.createElement("tbody");
 table.appendChild(tBody);
@@ -91,6 +92,7 @@ for (var i = 0; i < items.length; i++) {
 
     //table body rows
     let tr = document.createElement("tr");
+    tr.setAttribute("id", "item" + [i]);
     tBody.appendChild(tr);
 
     //Body - Image
@@ -117,8 +119,8 @@ for (var i = 0; i < items.length; i++) {
     tdPrice.innerHTML = items[i].price/100 + " €";
     tr.appendChild(tdPrice);
 
-}
-//-------------------------------------------
+
+};
 
 //total price
 
