@@ -112,7 +112,7 @@ fetch(url)
 })
     .catch(error => console.error(error));
 
-//items in cart ---------------------------------IDS
+//items in cart ---------------------------------
 function inCart() {
     if (inCartNumber !== null) {
         let inCartNumberNull = document.getElementById("inCart")

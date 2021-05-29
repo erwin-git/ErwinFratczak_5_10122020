@@ -1,19 +1,9 @@
 //API url
-//let apiUrlTeddies = "http://localhost:3000/api/teddies";
 let apiUrlCameras = "http://localhost:3000/api/cameras";
-//let apiUrlFurniture = "http://localhost:3000/api/furniture";
+
 
 //Items requests
 const getItems = () => {
-/*    fetch(apiUrlTeddies)
-        .then((response) => response.json())
-        .then(function (item) {
-            for (i = 0; i < item.length; i++) {
-                insertItem(item[i]);
-            }
-        })
-        .catch((error) => {alert("Something went wrong please try again...")})
-*/
     fetch(apiUrlCameras)
         .then((response) => response.json())
         .then(function (item) {
@@ -22,16 +12,7 @@ const getItems = () => {
             }
         })
         .catch((error) => {alert("Something went wrong please try again...")})
-
-/*    fetch(apiUrlFurniture)
-        .then((response) => response.json())
-        .then(function (item) {
-            for (i = 0; i < item.length; i++) {
-                insertItem(item[i]);
-            }
-        })
-        .catch((error) => {alert("Something went wrong please try again...")})
-*/        
+    
     inCart()
 
 };
@@ -98,7 +79,7 @@ const insertItem = (produit) => {
     button.innerHTML = "Afficher plus";
     bsCardBody.appendChild(button);
     
-    //bsColumn.appendChild(main);
+    
 };
 
 //items in cart ---------------------------------IDS

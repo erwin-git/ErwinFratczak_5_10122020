@@ -169,10 +169,6 @@ td, tr {
   text-align: center;
 }
 
-td i, tr i {
-  cursor: pointer;
-}
-
 #cart #emptyCart {
   display: -ms-grid;
   display: grid;
@@ -252,7 +248,7 @@ td i, tr i {
   background-color: #985eea;
   color: #FFF;
   padding: 30px;
-  margin: -60px 60px -60px 0;
+  margin: -40px 60px -60px 0;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);

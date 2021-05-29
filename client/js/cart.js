@@ -320,7 +320,7 @@ form.addEventListener('submit', e => {
     sendData();
 });
 
-// sens data form
+// send data form
 function sendData() {
  let contact;
     //Regex input control
